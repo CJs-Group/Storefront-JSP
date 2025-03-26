@@ -1,3 +1,6 @@
+<%@ page import="Model.Items.DB" %>
+<%@ page import="Model.Items.Item" %>
+<%@ page import="java.util.List" %>
 <html>
 <body>
     <div><span class="time" id="time"></span></div>
@@ -38,6 +41,16 @@
         <tr>
             <td><a href="cancel.jsp" class="button"> Cancel</a>
                 <input class="button" type="submit" value="Sign In">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select name="name" required="true">
+                    <option value="">-- Select Item --</option>
+                    <% for(Item item : DB.items) { %>
+                        <option value="<%= item.getName() %>"><%= item.getName() %></option>
+                    <% } %>
+                </select>
             </td>
         </tr>
     </table>
