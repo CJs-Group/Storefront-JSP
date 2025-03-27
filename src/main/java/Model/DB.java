@@ -1,4 +1,6 @@
-package Model.Items;
+package Model;
+import Model.Items.Unit;
+import Model.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
