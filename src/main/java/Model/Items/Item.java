@@ -1,7 +1,6 @@
 package Model.Items;
 
 import java.util.List;
-
 public class Item {
     public int ItemID;
     public List<Unit> units;
