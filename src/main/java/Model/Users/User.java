@@ -1,13 +1,13 @@
 package Model.Users;
 
-abstract class Account {
+public abstract class User {
     int userID;
     String username;
     String password;
     String email;
     String phoneNumber;
 
-    public Account(int userID, String username, String password, String email, String phoneNumber) {
+    public User(int userID, String username, String password, String email, String phoneNumber) {
         this.userID = userID;
         this.username = username;
         this.password = password;

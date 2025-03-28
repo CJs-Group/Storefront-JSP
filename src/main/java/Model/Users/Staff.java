@@ -1,6 +1,6 @@
 package Model.Users;
 
-public class Staff extends Account {
+public class Staff extends User {
     String role; // TODO: Make this a class with permissions, etc.
 
     public Staff(int userID, String username, String password, String email, String phoneNumber, String role) {

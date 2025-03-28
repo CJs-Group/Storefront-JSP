@@ -1,8 +1,12 @@
 package Model.Users;
+import Model.Items.Item;
+import Model.Items.Unit;
+import java.util.HashMap; //Dunno if I should be using hash maps but I'll think about it later because Java doesn't have pairs
+import java.util.Map;
 
-public class Customer extends Account {
-    List<Pair<Item, Integer>> cart = new ArrayList<>(); // Item and quantity
-    List<Pair<Item, Integer>> wishlist = new ArrayList<>(); // Item and quantity
+public class Customer extends User {
+    Map<Item, Integer> cart = new HashMap<>(); // Item to quantity
+    Map<Item, Integer> wishlist = new HashMap<>(); // Item to quantity
     String address;
     String paymentInfo; // TODO: Make this a class with card number, expiration date, etc.
     //Maybe a user icon?
@@ -13,58 +17,36 @@ public class Customer extends Account {
         this.paymentInfo = paymentInfo;
     }
 
-    public List<Pair<Item, Integer>> getCart() {
+    public Map<Item, Integer> getCart() {
         return cart;
     }
 
-    public void setCart(List<Pair<Item, Integer>> cart) {
+    public void setCart(Map<Item, Integer> cart) {
         this.cart = cart;
     }
 
     public void addToCart(Item item, int quantity) {
-        for (Pair<Item, Integer> pair : cart) {
-            if (pair.getKey().equals(item)) {
-                pair.setValue(pair.getValue() + quantity);
-                return;
-            }
-        }
-        cart.add(new Pair<>(item, quantity));
+        cart.put(item, cart.getOrDefault(item, 0) + quantity);
     }
 
     public void removeFromCart(Item item) {
-        for (Pair<Item, Integer> pair : cart) {
-            if (pair.getKey().equals(item)) {
-                cart.remove(pair);
-                return;
-            }
-        }
+        cart.remove(item);
     }
 
-    public List<Pair<Item, Integer>> getWishlist() {
+    public Map<Item, Integer> getWishlist() {
         return wishlist;
     }
 
-    public void setWishlist(List<Pair<Item, Integer>> wishlist) {
+    public void setWishlist(Map<Item, Integer> wishlist) {
         this.wishlist = wishlist;
     }
 
     public void addToWishlist(Item item, int quantity) {
-        for (Pair<Item, Integer> pair : wishlist) {
-            if (pair.getKey().equals(item)) {
-                pair.setValue(pair.getValue() + quantity);
-                return;
-            }
-        }
-        wishlist.add(new Pair<>(item, quantity));
+        wishlist.put(item, wishlist.getOrDefault(item, 0) + quantity);
     }
 
     public void removeFromWishlist(Item item) {
-        for (Pair<Item, Integer> pair : wishlist) {
-            if (pair.getKey().equals(item)) {
-                wishlist.remove(pair);
-                return;
-            }
-        }
+        wishlist.remove(item);
     }
 
     public String getAddress() {
